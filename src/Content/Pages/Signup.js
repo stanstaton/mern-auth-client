@@ -9,11 +9,12 @@ class Signup extends React.Component {
         firstname: '',
         lastname: '',
         email: '',
-        password: ''
+        password: '',
+        message: ''
     }
 
     storeInput = (e) => {
-        this.setState({[e.target.name]: e.target.value})
+        this.setState({[e.target.name]: e.target.value, message: ''})
         console.log(SERVER_URL)
     }
 
@@ -31,7 +32,8 @@ class Signup extends React.Component {
             this.props.updateUser()
         })
         .catch(err => {
-            console.log(err.response.data.message)
+            console.log(err.response.data)
+            this.setState({message: `${err.response.status}: ${err.response.data.message}`})
 
         })
     }
@@ -43,6 +45,7 @@ class Signup extends React.Component {
         return (
             <div>
                 <h2>Sign-up</h2>
+                <span className="red">{this.state.message}</span>
                 <form onSubmit={this.handleSubmit}>
                     <div>
                         <label>First Name:</label>

@@ -36,6 +36,8 @@ class App extends React.Component {
         console.log(err)
       })
 
+    } else {
+      this.setState({user: null})
     }
   }
   
@@ -43,7 +45,7 @@ class App extends React.Component {
     return (
       <Router>
       <div className="App">
-        <Nav user={this.state.user} />
+        <Nav user={this.state.user} updateUser={this.getUser} />
         <Header />
         <Content updateUser={this.getUser} user={this.state.user} />
         

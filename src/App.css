@@ -38,3 +38,7 @@ nav a:visited {
 nav a:hover {
   color: hotpink;
 }
+
+.red {
+  color: red;
+}
